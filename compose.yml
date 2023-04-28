@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  nginx-server:
+    build: nginx_server
+    ports:
+      - '11112:80'
+  nginx-proxy:
+    build: nginx_proxy
+    ports:
+      - '11111:80'
+    depends_on:
+      - nginx-server
