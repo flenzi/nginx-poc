@@ -5,9 +5,14 @@ services:
     build: nginx_server
     ports:
       - '11112:80'
+  nginx-fragments-server:
+    build: nginx_fragments_server
+    ports:
+      - '11113:80'
   nginx-proxy:
     build: nginx_proxy
     ports:
       - '11111:80'
     depends_on:
       - nginx-server
+      - nginx-fragments-server
